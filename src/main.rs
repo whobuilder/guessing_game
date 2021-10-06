@@ -1,17 +1,22 @@
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
+fn read_input() -> String
+{
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read the line");
+    input.trim().to_string()
+}
+
 fn main() {
     let secret_number = rand::thread_rng().gen_range(1..101);
     let mut counter = 0;
     println!("Guess a number between 1 and 100");
     loop {
         counter = counter + 1;
-        let mut guess = String::new();
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read the line");
-        let guess = guess.trim();
+        let guess = read_input();
         let guess: u32 = match guess.parse() {
             Ok(num) => num,
             Err(_) => {
@@ -27,6 +32,8 @@ fn main() {
                     "You win at you guess trial no {}!, {} == {}",
                     counter, guess, secret_number
                 );
+                println!("press a key to exit");
+                read_input();  
                 break;
             }
         }
