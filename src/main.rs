@@ -29,7 +29,7 @@ fn main() {
             Ordering::Greater => println!("{} is too big!", guess),
             Ordering::Equal => {
                 println!(
-                    "You win at you guess trial no {}!, {} == {}",
+                    "You win at your guess trial no {}!, {} == {}",
                     counter, guess, secret_number
                 );
                 println!("press a key to exit");
