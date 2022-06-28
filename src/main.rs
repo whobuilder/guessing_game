@@ -15,7 +15,6 @@ fn main() {
     let mut counter = 0;
     println!("Guess a number between 1 and 100");
     loop {
-        counter = counter + 1;
         let guess = read_input();
         let guess: u32 = match guess.parse() {
             Ok(num) => num,
@@ -24,6 +23,7 @@ fn main() {
                 continue;
             }
         };
+        counter = counter + 1;
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("{} is too small!", guess),
             Ordering::Greater => println!("{} is too big!", guess),
